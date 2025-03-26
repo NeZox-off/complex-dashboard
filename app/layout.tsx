@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { GlobalProvider } from "@/src/context/providers";
 
 const interSans = Inter({
   variable: "--font-inter",
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,10 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" data-mode="dark">
-      <body
-        className={`${interSans.variable} antialiased`}
-      >
-        {children}
+      <body className={`${interSans.variable} antialiased`}>
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );
