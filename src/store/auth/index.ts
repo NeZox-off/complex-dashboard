@@ -1,8 +1,13 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
-const useAuthStore = create((set) => ({
+interface AuthStore {
+  type: "login" | "register";
+  setType: (newType: AuthStore["type"]) => void;
+}
+
+const useAuthStore = create<AuthStore>((set) => ({
   type: "login",
-  setType: () => set((state) => ({type: state.type})),
-}))
+  setType: (newType) => set({ type: newType }),
+}));
 
-export default useStore;
+export default useAuthStore;
