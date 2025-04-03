@@ -59,11 +59,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-
     if (values.email && values.password) {
-      console.log(values);
-
       router.push("/dashboard");
     }
   }
@@ -79,7 +75,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>Nexery
+                <FormItem>
                   <FormLabel>First name</FormLabel>
                   <FormControl>
                     <Input
