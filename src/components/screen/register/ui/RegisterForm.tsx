@@ -79,7 +79,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem>Nexery
                   <FormLabel>First name</FormLabel>
                   <FormControl>
                     <Input
@@ -241,7 +241,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
           />
         </div>
         <div className="text-center space-y-8">
-          <Button className="w-full font-bold">Login</Button>
+          <Button className="w-full font-bold">Sign in</Button>
           <span className="text-primary">Forgot your password?</span>
         </div>
       </form>

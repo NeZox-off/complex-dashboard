@@ -9,7 +9,7 @@ const Register = ({}: RegisterProps) => {
 
 
   return (
-    <AuthLayout type="Register" title="" description="" position="left">
+    <AuthLayout type="Register" title="Sign in" description="Access to controls and settings. Log in to continue.">
       <RegisterForm />
     </AuthLayout>
   );

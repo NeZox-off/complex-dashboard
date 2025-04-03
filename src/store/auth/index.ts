@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
 interface AuthStore {
-  type: "login" | "register";
+  type: "Login" | "Register";
   setType: (newType: AuthStore["type"]) => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
-  type: "login",
+  type: "Login",
   setType: (newType) => set({ type: newType }),
 }));
 

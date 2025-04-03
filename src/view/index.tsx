@@ -11,7 +11,7 @@ const AuthPage = ({}: AuthProps) => {
     <section className="py-14 h-dvh">
       <div className="container px-16 mx-auto w-full h-full">
         <div className="flex items-center justify-between h-full">
-          {type === "login" ? <Login /> : <Register />}
+          {type === "Login" ? <Login /> : <Register />}
         </div>
       </div>
     </section>

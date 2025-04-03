@@ -12,25 +12,26 @@ interface AuthLayoutProps extends PropsWithChildren {
   type: "Login" | "Register";
   title: string;
   description: string;
-  position: "left" | "right";
 }
 
 const AuthLayout = ({
   type,
   title,
   description,
-  position,
   children,
 }: AuthLayoutProps) => {
   const { setType } = useAuthStore();
+  const handleSwitchType = () => {
+    setType(type === "Login" ? "Login" : "Register");
+  };
   return (
     <>
-      {position == "left" ? (
+      {type !== "Login" ? (
         <>
           <div className="max-w-xl w-full h-full p-16 rounded-xl bg-card flex flex-col justify-center relative">
             <div>
               <div className="text-center mb-8">
-                <h2 className="text-4xl mb-1">Sign in</h2>
+                <h2 className="text-4xl mb-1">{title}</h2>
                 <p className="text-lg font-medium text-white/40">
                   Access to controls and settings. Log in to continue.
                 </p>
@@ -40,7 +41,7 @@ const AuthLayout = ({
             <Tooltip>
               <TooltipTrigger
                 asChild
-                onClick={() => setType("login")}
+                onClick={() => handleSwitchType}
                 className="cursor-pointer"
               >
                 <span className="absolute flex justify-center items-center top-1/2 -right-6 transform size-12 -translate-y-1/2 bg-primary p-3 rounded-full">
@@ -77,9 +78,9 @@ const AuthLayout = ({
           <div className="max-w-xl w-full h-full p-16 rounded-xl bg-card flex flex-col justify-center relative">
             <div>
               <div className="text-center mb-8">
-                <h2 className="text-4xl mb-1">Sign in</h2>
+                <h2 className="text-4xl mb-1">{title}</h2>
                 <p className="text-lg font-medium text-white/40">
-                  Access to controls and settings. Log in to continue.
+                  {description}
                 </p>
               </div>
               {children}
@@ -87,7 +88,7 @@ const AuthLayout = ({
             <Tooltip>
               <TooltipTrigger
                 asChild
-                onClick={() => setType("login")}
+                onClick={() => handleSwitchType}
                 className="cursor-pointer"
               >
                 <span className="absolute flex justify-center items-center top-1/2 -right-6 transform size-12 -translate-y-1/2 bg-primary p-3 rounded-full">
@@ -118,11 +119,11 @@ const AuthLayout = ({
               height={162}
             />
           </div>
-          v
         </>
       )}
     </>
-  );
+  );         
+
 };
 
 export default AuthLayout;
