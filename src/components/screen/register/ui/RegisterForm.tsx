@@ -1,42 +1,43 @@
 import React, { useState } from "react";
 import {
-    Button,
-    Checkbox,
-    Icon,
-    Input,
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-  } from "@/src/components/ui";
+  Button,
+  Checkbox,
+  Icon,
+  Input,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/src/components/ui";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import useUserStore from "@/src/store/user";
 
 const formSchema = z.object({
-    firstName: z.string().min(2),
-    lastName: z.string().min(2),
-    email: z.string().email("Failed! Email is required."),
-    password: z
-      .string()
-      .min(8, "Password must contain a minimum of 8 characters."),
-    confirmPassword: z
-      .string()
-      .min(8, "Password must contain a minimum of 8 characters."),
-    agreeWithTermsAndPrivacy: z.boolean(),
-    rememberMe: z.boolean(),
-  });
+  firstName: z.string().min(2),
+  lastName: z.string().min(2),
+  email: z.string().email("Failed! Email is required."),
+  password: z
+    .string()
+    .min(8, "Password must contain a minimum of 8 characters."),
+  confirmPassword: z
+    .string()
+    .min(8, "Password must contain a minimum of 8 characters."),
+  agreeWithTermsAndPrivacy: z.boolean(),
+  rememberMe: z.boolean(),
+});
 
 interface RegisterFormProps {}
 
 const RegisterForm = ({}: RegisterFormProps) => {
   const [isHiddenPass, setIsHiddenPass] = useState(true);
   const [isHiddenConfPass, setIsHiddenConfPass] = useState(true);
+  const { setUser } = useUserStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -59,7 +60,19 @@ const RegisterForm = ({}: RegisterFormProps) => {
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    if (values.email && values.password) {
+    if (
+      values.email &&
+      values.password === values.confirmPassword &&
+      values.agreeWithTermsAndPrivacy
+    ) {
+      setUser({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        privacy: values.agreeWithTermsAndPrivacy,
+        rememberMe: values.rememberMe,
+      });
       router.push("/dashboard");
     }
   }

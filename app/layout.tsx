@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" data-mode="dark">
+    <html lang="en" className="dark no-touch" data-mode="dark">
       <body className={`${interSans.variable} antialiased`}>
         <GlobalProvider>{children}</GlobalProvider>
       </body>

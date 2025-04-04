@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-interface AuthStore {
+interface ToggleAuthorizationStore {
   type: "Login" | "Register";
-  setType: (newType: AuthStore["type"]) => void;
+  setType: (newType: ToggleAuthorizationStore["type"]) => void;
 }
 
-const useAuthStore = create<AuthStore>((set) => ({
+const useToggleAuthorizationStore = create<ToggleAuthorizationStore>((set) => ({
   type: "Login",
   setType: (newType) => set({ type: newType }),
 }));
 
-export default useAuthStore;
+export default useToggleAuthorizationStore;

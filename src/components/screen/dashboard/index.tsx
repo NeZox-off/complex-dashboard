@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 
-interface indexProps {}
+interface DashboardProps {}
 
-export const index: FC<indexProps> = ({}) => {
-  return <div>index</div>;
+export const Dashboard: FC<DashboardProps> = ({}) => {
+  return <div>
+    
+  </div>;
 };

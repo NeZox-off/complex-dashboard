@@ -1,12 +1,11 @@
 import React, { PropsWithChildren } from "react";
-import Image from "next/image";
 import {
   Icon,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/src/components/ui";
-import useAuthStore from "@/src/store/auth";
+import useToggleAuthorizationStore from "@/src/store/auth";
 import WelcomeBanner from "./ui/welcome-banner";
 
 interface AuthLayoutProps extends PropsWithChildren {
@@ -21,7 +20,7 @@ const AuthLayout = ({
   description,
   children,
 }: AuthLayoutProps) => {
-  const { setType } = useAuthStore();
+  const { setType } = useToggleAuthorizationStore();
   const handleSwitchType = () => {
     setType(type === "Login" ? "Register" : "Login");
   };
