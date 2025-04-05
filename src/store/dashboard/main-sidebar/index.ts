@@ -6,7 +6,7 @@ interface MainSidebarStore {
 }
 
 const useMainSidebarStore = create<MainSidebarStore>((set) => ({
-  show: true,
+  show: false,
   setShow: () => set((state) => ({ show: !state.show })),
 }));
 
