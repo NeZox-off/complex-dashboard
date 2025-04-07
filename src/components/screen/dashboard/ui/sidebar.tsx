@@ -1,5 +1,11 @@
 "use client";
-import { Button, Icon } from "@/src/components/ui";
+import {
+  Button,
+  Icon,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/src/components/ui";
 import { cn } from "@/src/lib/utils";
 import useMainSidebarStore from "@/src/store/dashboard/main-sidebar";
 import React from "react";
@@ -28,26 +34,58 @@ const Sidebar = ({}: SidebarProps) => {
         <footer className="border-t-2 border-solid border-t-white/10">
           <ul className="px-4 py-5 space-y-2">
             <li>
-              <Button
-                className={cn(
-                  "flex w-full justify-start gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
-                )}
-              >
-                <Icon name={"UserPlus"} size={24} />
-                {show && "Add to panel"}
-              </Button>
-            </li>
-            {account.map((item, index) => (
-              <li>
-                <Link
-                  href={"/dashboard/settings"}
+              {show ? (
+                <Button
                   className={cn(
-                    "flex items-center gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
+                    "flex w-full justify-start gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
                   )}
                 >
-                  <Icon name={item.icon} size={24} />
-                  {show && item.title}
-                </Link>
+                  <Icon name={"UserPlus"} size={24} />
+                  {show && "Add to panel"}
+                </Button>
+              ) : (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      className={cn(
+                        "flex w-full justify-start gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
+                      )}
+                    >
+                      <Icon name={"UserPlus"} size={24} />
+                      {show && "Add to panel"}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">Add to panel</TooltipContent>
+                </Tooltip>
+              )}
+            </li>
+            {account.map((item, index) => (
+              <li key={`${index}-account-${item.title}`}>
+                {show ? (
+                  <Link
+                    href={"/dashboard/settings"}
+                    className={cn(
+                      "flex items-center gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
+                    )}
+                  >
+                    <Icon name={item.icon} size={24} />
+                    {show && item.title}
+                  </Link>
+                ) : (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                        href={"/dashboard/settings"}
+                        className={cn(
+                          "flex items-center gap-2 px-2 py-2 rounded text-base font-medium transition-all ease-linear bg-inherit border border-solid border-transparent hover:border-white/10 hover:bg-[#191A1C]"
+                        )}
+                      >
+                        <Icon name={item.icon} size={24} />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">{item.title}</TooltipContent>
+                  </Tooltip>
+                )}
               </li>
             ))}
           </ul>

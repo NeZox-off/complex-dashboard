@@ -1,3 +1,4 @@
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/src/components/ui";
 import { cn } from "@/src/lib/utils";
 import useMainSidebarStore from "@/src/store/dashboard/main-sidebar";
 import useUserStore from "@/src/store/user";
@@ -18,22 +19,48 @@ const Profile = ({ url }: ProfileProps) => {
         show ? "justify-start" : "p-1 hover:bg-[#191A1C]"
       )}
     >
-      {url ? (
-        <Image src={url} alt="Profile image" />
-      ) : (
-        <div
-          className={cn(
-            "flex items-center justify-center rounded p-1 transition-all h-8 w-8 ease-linear bg-[#191A1C] text-xs border border-solid border-white/10 select-none",
-            !show && "hover:bg-[#191A1C]/60"
+      {show ? (
+        <>
+          {url ? (
+            <Image src={url} alt="Profile image" />
+          ) : (
+            <div
+              className={cn(
+                "flex items-center justify-center rounded p-1 transition-all h-8 w-8 ease-linear bg-[#191A1C] text-xs border border-solid border-white/10 select-none",
+                !show && "hover:bg-[#191A1C]/60"
+              )}
+            >
+              {user?.firstName.slice(0, 1) + "" + user?.lastName.slice(0, 1)}
+            </div>
           )}
-        >
-          {user?.firstName.slice(0, 1) + "" + user?.lastName.slice(0, 1)}
-        </div>
-      )}
-      {show && (
-        <p className="select-none font-medium whitespace-nowrap">
-          {user?.firstName} {user?.lastName}
-        </p>
+          {show && (
+            <p className="select-none font-medium whitespace-nowrap">
+              {user?.firstName} {user?.lastName}
+            </p>
+          )}
+        </>
+      ) : (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            {url ? (
+              <Image src={url} alt="Profile image" />
+            ) : (
+              <div
+                className={cn(
+                  "flex items-center justify-center rounded p-1 transition-all h-8 w-8 ease-linear bg-[#191A1C] text-xs border border-solid border-white/10 select-none",
+                  !show && "hover:bg-[#191A1C]/60"
+                )}
+              >
+                {user?.firstName.slice(0, 1) + "" + user?.lastName.slice(0, 1)}
+              </div>
+            )}
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p className="select-none font-medium whitespace-nowrap">
+              {user?.firstName} {user?.lastName}
+            </p>
+          </TooltipContent>
+        </Tooltip>
       )}
     </div>
   );
