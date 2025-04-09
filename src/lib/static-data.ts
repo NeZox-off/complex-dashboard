@@ -4,7 +4,7 @@ type AccountData = {
   title: string;
   link: string;
   icon: IconProps["name"];
-}
+};
 
 type ContentData = {
   title: string;
@@ -16,6 +16,9 @@ type NavigationData = {
   title: string;
   content?: ContentData[];
 };
+interface TransformationCurrentPathnameType {
+  [key: string]: string | undefined;
+}
 
 const GLOBAL_PATH = "/dashboard";
 
@@ -43,7 +46,6 @@ export const staticData = {
         ],
       },
     ];
-
     for (let i = 0; i < data.length; i++) {
       const content = data[i]!.content;
       if (content) {
@@ -61,14 +63,21 @@ export const staticData = {
       {
         title: "Settings",
         icon: "Settings",
-        link: "/dashboard/settings",
+        link: `${GLOBAL_PATH}/settings`,
       },
       {
         title: "Help",
         icon: "CircleHelp",
-        link: "/dashboard/help",
+        link: `${GLOBAL_PATH}/help`,
       },
     ];
     return data;
   },
 };
+
+export const transformationCurrentPathname: TransformationCurrentPathnameType =
+  {
+    dashboard: "Dashboard",
+    tasks: "Task manager",
+    control: "Control",
+  };

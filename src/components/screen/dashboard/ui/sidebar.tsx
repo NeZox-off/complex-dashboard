@@ -13,18 +13,20 @@ import Profile from "./profile";
 import Navigation from "./navigation";
 import Link from "next/link";
 import { staticData } from "@/src/lib/static-data";
+import { useHistoryLinks } from "@/src/store/dashboard/history-links";
 
 interface SidebarProps {}
 
 const Sidebar = ({}: SidebarProps) => {
   const { show, setShow } = useMainSidebarStore();
+  const { setHistoryLink } = useHistoryLinks();
   const account = staticData.account();
   return (
-    <aside className="max-w-[var(--sidebar-width)] h-full flex items-center">
+    <aside className="sticky top-0 h-screen z-30">
       <div
         className={cn(
           "transition-all ease-linear h-full space-y-3 flex flex-col relative",
-          show ? "w-full" : "w-18 justify-center"
+          show ? "w-xs" : "w-18 justify-center"
         )}
       >
         <header className="py-5 px-4 h-full">
@@ -60,7 +62,20 @@ const Sidebar = ({}: SidebarProps) => {
               )}
             </li>
             {account.map((item, index) => (
-              <li key={`${index}-account-${item.title}`}>
+              <li
+                key={`${index}-account-${item.title}`}
+                onClick={() =>
+                  setHistoryLink({
+                    title: 'Account',
+                      content: {
+                        title: item.title,
+                        link: item.link,
+                        icon: item.icon,
+                      },
+                      last_visit: new Date(),
+                  })
+                }
+              >
                 {show ? (
                   <Link
                     href={"/dashboard/settings"}
@@ -92,7 +107,7 @@ const Sidebar = ({}: SidebarProps) => {
         </footer>
         <button
           onClick={() => setShow()}
-          className="absolute h-full hidden w-2 transition-all ease-linear after:absolute cursor-e-resize -right-[0.3rem] after:inset-y-0 after:right-1/2 after:w-[2px] after:bg-sidebar-border hover:after:bg-sidebar-border/80 after:translate-x-1/2 sm:flex"
+          className="absolute h-full hidden w-2 transition-all z-10 ease-linear after:absolute cursor-e-resize -right-[0.3rem] after:inset-y-0 after:right-1/2 after:w-[2px] after:bg-[#333] hover:after:bg-[#333]/80 after:translate-x-1/2 sm:flex"
         ></button>
       </div>
     </aside>

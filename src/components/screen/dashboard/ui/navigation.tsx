@@ -7,6 +7,7 @@ import {
 } from "@/src/components/ui";
 import { staticData } from "@/src/lib/static-data";
 import { cn } from "@/src/lib/utils";
+import { useHistoryLinks } from "@/src/store/dashboard/history-links";
 import useMainSidebarStore from "@/src/store/dashboard/main-sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,6 +18,7 @@ interface NavigationProps {}
 const Navigation = ({}: NavigationProps) => {
   const navigationData = staticData.navigation();
   const { show } = useMainSidebarStore();
+  const { setHistoryLink } = useHistoryLinks();
   const pathname = usePathname();
   return (
     <nav>
@@ -31,6 +33,17 @@ const Navigation = ({}: NavigationProps) => {
             <ul className="space-y-2">
               {item.content?.map((contentItem, contentIndex) => (
                 <li
+                  onClick={() =>
+                    setHistoryLink({
+                      title: item.title,
+                      content: {
+                        title: contentItem.title,
+                        link: contentItem.link,
+                        icon: contentItem.icon,
+                      },
+                      last_visit: new Date(),
+                    })
+                  }
                   key={`${contentIndex}-nav-content-item-${contentItem.title}`}
                   className={cn(
                     "relative mx-auto",
@@ -44,7 +57,7 @@ const Navigation = ({}: NavigationProps) => {
                       className={cn(
                         "inline-flex items-center gap-2 p-2 rounded text-base font-medium transition-all ease-linear border border-solid border-transparent",
                         pathname === contentItem.link
-                          ? "bg-primary/10 text-primary border-primary/20 hover:bg-primary/20"
+                          ? "bg-primary/10 text-primary border-primary/20 hover:bg-primary/2 pointer-events-none"
                           : "hover:border-white/10 hover:bg-[#191A1C]",
                         show && "w-full"
                       )}
@@ -60,7 +73,7 @@ const Navigation = ({}: NavigationProps) => {
                           className={cn(
                             "inline-flex items-center gap-2 p-2 rounded text-base font-medium transition-all ease-linear border border-solid border-transparent",
                             pathname === contentItem.link
-                              ? "bg-primary/10 text-primary border-primary/20 hover:bg-primary/20"
+                              ? "bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 pointer-events-none"
                               : "hover:border-white/10 hover:bg-[#191A1C]",
                             show && "w-full"
                           )}
@@ -68,7 +81,9 @@ const Navigation = ({}: NavigationProps) => {
                           <Icon name={contentItem.icon} size={show ? 24 : 20} />
                         </Link>
                       </TooltipTrigger>
-                      <TooltipContent side="right">{contentItem.title}</TooltipContent>
+                      <TooltipContent side="right">
+                        {contentItem.title}
+                      </TooltipContent>
                     </Tooltip>
                   )}
                 </li>

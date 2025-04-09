@@ -5,3 +5,4 @@ export * from "./checkbox";
 export * from "./button";
 export * from "./form";
 export * from "./tooltip";
+export * from "./breadcrumb";

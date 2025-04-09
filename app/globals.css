@@ -148,3 +148,72 @@ body {
     @apply h-full;
   }
 }
+
+.lines {
+  @apply absolute top-0 left-0 right-0 h-full m-auto px-20 w-full flex justify-between;
+}
+
+.line {
+  @apply relative w-[1px] h-full bg-[#333] overflow-hidden;
+}
+
+.line::after {
+  @apply content-[""] block absolute h-[15vh] w-full -top-1/2 left-0 animate-[drop_4s_0s_infinite];
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 75%,
+    #ffffff 100%
+  );
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.line:nth-child(1)::after {
+  animation-delay: 3.7s;
+}
+
+.line:nth-child(2)::after {
+  animation-delay: 3.5s;
+}
+
+.line:nth-child(3)::after {
+  animation-delay: 3.4s;
+}
+
+.line:nth-child(4)::after {
+  animation-delay: 3.3s;
+}
+
+.line:nth-child(5)::after {
+  animation-delay: 3.2s;
+}
+
+.line:nth-child(6)::after {
+  animation-delay: 3.2s;
+}
+
+.line:nth-child(7)::after {
+  animation-delay: 3.3s;
+}
+
+.line:nth-child(8)::after {
+  animation-delay: 3.4s;
+}
+
+.line:nth-child(9)::after {
+  animation-delay: 3.5s;
+}
+
+.line:nth-child(10)::after {
+  animation-delay: 3.7s;
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}

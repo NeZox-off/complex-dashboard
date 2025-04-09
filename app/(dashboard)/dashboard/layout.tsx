@@ -1,13 +1,17 @@
+import Header from "@/src/components/screen/dashboard/ui/header";
 import Sidebar from "@/src/components/screen/dashboard/ui/sidebar";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
-interface LayoutProps {}
+interface LayoutProps extends PropsWithChildren {}
 
-const Layout = ({}: LayoutProps) => {
-
+const Layout = ({ children }: LayoutProps) => {
   return (
-    <main className="h-dvh">
+    <main className="flex relative min-h-dvh">
       <Sidebar />
+      <article className="flex-1 flex flex-col overflow-y-auto max-h-screen">
+        <Header />
+        <section className="flex-1">{children}</section>
+      </article>
     </main>
   );
 };
