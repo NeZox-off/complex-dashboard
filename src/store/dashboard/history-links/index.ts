@@ -23,7 +23,20 @@ export const useHistoryLinks = create(
       history: [],
       setHistoryLink: (newHistoryLink) => {
         const current = get().history;
-        const updatedHistory = [newHistoryLink, ...current].slice(0, 6);
+        let updatedHistory;
+        let isHas = [];
+        for (let i = 0; i < 6; ++i) {
+          console.log(
+            current[i]?.content?.title === newHistoryLink.content.title
+          );
+          if (current[i]?.content?.title === newHistoryLink.content.title) {
+            isHas.push(1);
+          } else {
+            isHas.push(0);
+          }
+        }
+        if (isHas.includes(1)) return;
+        updatedHistory = [newHistoryLink, ...current].slice(0, 6);
         set({ history: updatedHistory });
       },
     }),
