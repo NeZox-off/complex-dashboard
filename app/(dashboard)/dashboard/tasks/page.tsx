@@ -1,11 +1,10 @@
-import React from 'react'
+import TasksManager from "@/src/components/screen/dashboard/tasks";
+import React from "react";
 
-interface PageProps {
-  
-}
+interface PageProps {}
 
 const Page = ({}: PageProps) => {
-  return <div>Page</div>
-}
+  return <TasksManager />;
+};
 
-export default Page
+export default Page;

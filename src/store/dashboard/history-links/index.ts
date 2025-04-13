@@ -9,7 +9,7 @@ interface History {
     link: string;
     icon: IconProps["name"];
   };
-  last_visit: Date;
+  last_visit: Date | string | number;
 }
 
 interface HistoryLinksStore {
@@ -31,6 +31,8 @@ export const useHistoryLinks = create(
           );
           if (current[i]?.content?.title === newHistoryLink.content.title) {
             isHas.push(1);
+            current[i].last_visit = new Date();
+            set({ history: current });
           } else {
             isHas.push(0);
           }
