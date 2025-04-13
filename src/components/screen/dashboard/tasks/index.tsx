@@ -46,8 +46,8 @@ const TasksManager = ({}: TasksManagerProps) => {
       </div>
       <div className="px-8 py-6">
         <ul className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4 container mx-auto">
-          {new Array(13).fill(null).map(() => (
-            <li className="py-3 px-4 bg-[#191A1C] min-w-1/6 rounded">
+          {new Array(13).fill(null).map((_, index) => (
+            <li className="py-3 px-4 bg-[#191A1C] min-w-1/6 rounded" key={`${index}-task-card`}>
               <div className="flex flex-col gap-2 mb-4">
                 <div>
                   <span className="text-xs text-white/40">Title:</span>

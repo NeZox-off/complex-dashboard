@@ -19,8 +19,8 @@ import Link from "next/link";
 import useUserStore from "@/src/store/user";
 
 const formSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
+  firstName: z.string().min(2, "First name must contain a minimum of 2 letters!"),
+  lastName: z.string().min(2, "Last name must contain a minimum of 2 letters!"),
   email: z.string().email("Failed! Email is required."),
   password: z
     .string()
@@ -28,7 +28,9 @@ const formSchema = z.object({
   confirmPassword: z
     .string()
     .min(8, "Password must contain a minimum of 8 characters."),
-  agreeWithTermsAndPrivacy: z.boolean(),
+  agreeWithTermsAndPrivacy: z.boolean({
+    required_error: "This point is required!"
+  }),
   rememberMe: z.boolean(),
 });
 
@@ -88,12 +90,12 @@ const RegisterForm = ({}: RegisterFormProps) => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel>First name</FormLabel>
                   <FormControl>
                     <Input
                       className="px-5 py-3"
-                      placeholder="Example"
+                      placeholder="E.x. Tom"
                       {...field}
                     />
                   </FormControl>
@@ -105,12 +107,12 @@ const RegisterForm = ({}: RegisterFormProps) => {
               control={form.control}
               name="lastName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel>Last name</FormLabel>
                   <FormControl>
                     <Input
                       className="px-5 py-3"
-                      placeholder="Example"
+                      placeholder="E.x. Beltran"
                       {...field}
                     />
                   </FormControl>
@@ -129,7 +131,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
                   <Input
                     type="email"
                     className="px-5 py-3"
-                    placeholder="example@gmail.com"
+                    placeholder="test@gmail.com"
                     {...field}
                   />
                 </FormControl>
@@ -142,15 +144,15 @@ const RegisterForm = ({}: RegisterFormProps) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="inline-flex items-center justify-between">
-                  Password
+                <div className="inline-flex items-center justify-between">
+                  <FormLabel>Password</FormLabel>
                   <span
                     onClick={() => handleSwitchHiddenPass()}
-                    className="p-2 transition-color hover:bg-background rounded-full"
+                    className="p-2 transition-color hover:bg-background rounded-full text-white/20"
                   >
                     <Icon name="Eye" />
                   </span>
-                </FormLabel>
+                </div>
                 <FormControl>
                   {isHiddenPass ? (
                     <Input
@@ -177,15 +179,15 @@ const RegisterForm = ({}: RegisterFormProps) => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="inline-flex items-center justify-between">
-                  Confirm password
+                <div className="inline-flex items-center justify-between">
+                  <FormLabel>Confirm password</FormLabel>
                   <span
                     onClick={() => handleSwitchHiddenConfPass()}
-                    className="p-2 transition-color hover:bg-background rounded-full"
+                    className="p-2 transition-color hover:bg-background rounded-full text-white/20"
                   >
                     <Icon name="Eye" />
                   </span>
-                </FormLabel>
+                </div>
                 <FormControl>
                   {isHiddenConfPass ? (
                     <Input

@@ -16,7 +16,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { z } from "zod";
 
-
 const formSchema = z.object({
   email: z.string().email("Failed! Email is required."),
   password: z
@@ -76,15 +75,15 @@ const LoginForm = ({}: LoginFormProps) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="inline-flex items-center justify-between">
-                  Password
+                <div className="inline-flex items-center justify-between">
+                  <FormLabel>Password</FormLabel>
                   <span
                     onClick={() => handleSwitchHiddenPass()}
                     className="p-2 transition-color hover:bg-background rounded-full"
                   >
                     <Icon name="Eye" />
                   </span>
-                </FormLabel>
+                </div>
                 <FormControl>
                   {isHiddenPass ? (
                     <Input
