@@ -16,6 +16,17 @@ type NavigationData = {
   title: string;
   content?: ContentData[];
 };
+
+type Board = {
+  title: string;
+  totalTasks: number;
+  board: {
+    boardId: string;
+    quantityOfTeam: number;
+    date: Date | string;
+  };
+};
+
 interface TransformationCurrentPathnameType {
   [key: string]: string | undefined;
 }
@@ -71,6 +82,21 @@ export const staticData = {
         link: `${GLOBAL_PATH}/help`,
       },
     ];
+    return data;
+  },
+  boards: () => {
+    let data: Board[] = [
+      {
+        title: "Site",
+        totalTasks: 0,
+        board: {
+          boardId: "IDB2637",
+          quantityOfTeam: 0,
+          date: new Date(),
+        },
+      },
+    ];
+
     return data;
   },
 };
