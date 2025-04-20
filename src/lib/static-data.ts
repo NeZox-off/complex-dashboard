@@ -1,31 +1,4 @@
-import { IconProps } from "../components/ui";
-
-type AccountData = {
-  title: string;
-  link: string;
-  icon: IconProps["name"];
-};
-
-type ContentData = {
-  title: string;
-  link: string;
-  icon: IconProps["name"];
-};
-
-type NavigationData = {
-  title: string;
-  content?: ContentData[];
-};
-
-type Board = {
-  title: string;
-  totalTasks: number;
-  board: {
-    boardId: string;
-    quantityOfTeam: number;
-    date: Date | string;
-  };
-};
+import { AccountData, Board, NavigationData } from "./type";
 
 interface TransformationCurrentPathnameType {
   [key: string]: string | undefined;
@@ -93,6 +66,29 @@ export const staticData = {
           boardId: "IDB2637",
           quantityOfTeam: 0,
           date: new Date(),
+          categories: [
+            {
+              title: "New",
+              status: "new",
+              color: "green",
+              tasks: [
+                {
+                  title: "test",
+                  description: null,
+                  workers: null,
+                  task: {
+                    author: "Test",
+                    priority: null,
+                    date: {
+                      start: new Date(),
+                      end: new Date(),
+                    },
+                    comments: null,
+                  },
+                },
+              ],
+            },
+          ],
         },
       },
     ];
