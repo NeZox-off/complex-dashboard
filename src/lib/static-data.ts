@@ -74,11 +74,205 @@ export const staticData = {
               tasks: [
                 {
                   title: "test",
-                  description: null,
-                  workers: null,
+                  description:
+                    "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
+                  workers: [
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                  ],
                   task: {
                     author: "Test",
-                    priority: null,
+                    priority: "high",
+                    date: {
+                      start: new Date(),
+                      end: new Date(),
+                    },
+                    comments: null,
+                  },
+                },
+              ],
+            },
+            {
+              title: "New",
+              status: "new",
+              color: "green",
+              tasks: [
+                {
+                  title: "test",
+                  description:
+                    "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
+                  workers: [
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                  ],
+                  task: {
+                    author: "Test",
+                    priority: "high",
+                    date: {
+                      start: new Date(),
+                      end: new Date(),
+                    },
+                    comments: null,
+                  },
+                },
+              ],
+            },
+            {
+              title: "New",
+              status: "new",
+              color: "green",
+              tasks: [
+                {
+                  title: "test",
+                  description:
+                    "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
+                  workers: [
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                  ],
+                  task: {
+                    author: "Test",
+                    priority: "high",
+                    date: {
+                      start: new Date(),
+                      end: new Date(),
+                    },
+                    comments: null,
+                  },
+                },
+              ],
+            },
+            {
+              title: "New",
+              status: "new",
+              color: "green",
+              tasks: [
+                {
+                  title: "test",
+                  description:
+                    "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
+                  workers: [
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                  ],
+                  task: {
+                    author: "Test",
+                    priority: "high",
+                    date: {
+                      start: new Date(),
+                      end: new Date(),
+                    },
+                    comments: null,
+                  },
+                },
+              ],
+            },
+            {
+              title: "New",
+              status: "new",
+              color: "green",
+              tasks: [
+                {
+                  title: "test",
+                  description:
+                    "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
+                  workers: [
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                    {
+                      avatar: null,
+                      name: "Maksym",
+                      email: "mpolakov777@gmail.com",
+                    },
+                  ],
+                  task: {
+                    author: "Test",
+                    priority: "high",
                     date: {
                       start: new Date(),
                       end: new Date(),

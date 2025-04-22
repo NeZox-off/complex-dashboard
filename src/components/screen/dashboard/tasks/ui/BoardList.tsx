@@ -9,7 +9,7 @@ interface BoardListProps {}
 const BoardList = ({}: BoardListProps) => {
   const boards = staticData.boards();
   return (
-    <>
+    <div className="flex-1 overflow-y-auto flex flex-col items-center px-8 pt-6 pb-24">
       {boards.length !== 0 ? (
         <ul className="container mx-auto grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4">
           {boards.map((item, index) => (
@@ -62,7 +62,7 @@ const BoardList = ({}: BoardListProps) => {
       ) : (
         <NothingBlock />
       )}
-    </>
+    </div>
   );
 };
 

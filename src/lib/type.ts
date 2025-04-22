@@ -21,10 +21,14 @@ export type NavigationData = {
 
 // TASKS PAGE
 
+export type Colors = {
+  [key in TaskCategory["color"]]: string;
+};
+
 export type Worker = {
   name: string;
   email: string;
-  avatar: string;
+  avatar: string | null;
 };
 
 export type TaskCategory = {

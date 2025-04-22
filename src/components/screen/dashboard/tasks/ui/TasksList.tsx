@@ -14,7 +14,7 @@ const TasksList = ({ params }: TasksListProps) => {
       ? boards.find((item) => item.board.boardId === params)
       : null;
   const categories = findBoard?.board.categories;
-  return <>{findBoard ? <TaskCategory categories={categories} board={findBoard} /> : <NothingBlock />}</>;
+  return <div className="overflow-x-auto h-full flex-col items-center pl-8 pt-6">{findBoard ? <TaskCategory categories={categories} board={findBoard} /> : <NothingBlock />}</div>;
 };
 
 export default TasksList;

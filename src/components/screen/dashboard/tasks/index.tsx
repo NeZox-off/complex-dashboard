@@ -12,12 +12,10 @@ interface TasksManagerProps {}
 const TasksManager = ({}: TasksManagerProps) => {
   const boardParams = useSearchParams().get("board");
   return (
-    <div className="max-h-screen flex flex-col">
+    <div className="max-h-screen flex flex-col h-full">
       <TasksHead />
       <TasksNavigation />
-      <div className="flex-1 overflow-y-auto flex flex-col items-center px-8 pt-6 pb-24">
-        {boardParams ? <TasksList params={boardParams} /> : <BoardList />}
-      </div>
+      {boardParams ? <TasksList params={boardParams} /> : <BoardList />}
     </div>
   );
 };
