@@ -1,10 +1,10 @@
+import TasksManagerPage from "@/views/dashboard/tasks/TaskManagerPage";
 import React from "react";
-import { DashboardPage } from "@/views/dashboard/DashboardPage";
 
 interface PageProps {}
 
 const Page = ({}: PageProps) => {
-  return <DashboardPage />;
+  return <TasksManagerPage />;
 };
 
 export default Page;

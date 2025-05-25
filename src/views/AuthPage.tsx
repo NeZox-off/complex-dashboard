@@ -1,6 +1,8 @@
 import { Authorization } from "@/features/user-auth/ui/Authorization";
 
-export default function HomePage() {
+interface AuthProps {}
+
+const AuthPage = ({}: AuthProps) => {
   return (
     <section>
       <div className="flex items-center justify-between h-dvh">
@@ -8,4 +10,6 @@ export default function HomePage() {
       </div>
     </section>
   );
-}
+};
+
+export default AuthPage;
