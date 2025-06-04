@@ -6,9 +6,12 @@ const TASKS: TaskType[] = [
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
     column_status: "TODO",
-    board: {
-      id: "IDC1234",
-    },
+    teams: [
+      {
+        id: "57c6-13a-3302",
+        fullName: "Maksym Poliakov",
+      },
+    ],
     details: {
       author: "Maksym",
       priority: "small",
@@ -23,9 +26,7 @@ const TASKS: TaskType[] = [
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
     column_status: "DONE",
-    board: {
-      id: "IDC1234",
-    },
+    teams: null,
     details: {
       author: "Maksym",
       priority: null,
@@ -40,9 +41,7 @@ const TASKS: TaskType[] = [
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
     column_status: "DONE",
-    board: {
-      id: "IDC1234",
-    },
+    teams: null,
     details: {
       author: "Maksym",
       priority: "small",
@@ -57,9 +56,7 @@ const TASKS: TaskType[] = [
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
     column_status: "IN_REVIEW",
-    board: {
-      id: "IDC1234",
-    },
+    teams: null,
     details: {
       author: "Maksym",
       priority: "small",

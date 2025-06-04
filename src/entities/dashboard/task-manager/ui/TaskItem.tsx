@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/shared/lib";
-import { TaskWorkerItem } from "./TaskWorkerItem";
 import { TaskType } from "../model/types";
 import { Button, Icon } from "@/shared/ui";
 import { IconPriority } from "./IconPriority";
@@ -67,7 +66,7 @@ var TaskItem = ({ taskItem }: TaskItemProps) => {
         </div>
         <Button
           variant={"none"}
-          className="absolute opacity-0 group-hover:opacity-100 right-0 bottom-0 bg-[#191A1C] p-2 rounded border border-white/10"
+          className="absolute opacity-0 group-hover:opacity-100 right-0 bottom-0 bg-[#191A1C] p-1 rounded border border-white/10"
         >
           <Icon name="Settings" size={20} />
         </Button>

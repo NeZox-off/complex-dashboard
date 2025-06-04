@@ -19,13 +19,13 @@ const COLOR_STATUS = {
 
 export const TaskColumn: FC<TaskColumnProps> = ({ tasks, status }) => {
   return (
-    <div className="shrink-0 flex flex-col bg-[#191A1C] shadow-md pt-6 px-2 border-x-2 border-b-2 border-white/10 rounded-b">
+    <div className="shrink-0 flex flex-col bg-[#191A1C] shadow-md pt-6 pb-3 px-3 border-x-2 border-b-2 border-white/10 rounded-b">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2 pl-3">
           <h2 className={cn("text-xl font-semibold", COLOR_STATUS[status])}>
             {COLUMN_STATUS[status]}
           </h2>
-          <span className="bg-[#191A1C] rounded-full w-5 h-5 text-sm text-center text-white">
+          <span className="bg-background rounded-full w-5 h-5 text-xs place-content-center text-center text-white">
             {tasks.length}
           </span>
         </div>
@@ -33,23 +33,22 @@ export const TaskColumn: FC<TaskColumnProps> = ({ tasks, status }) => {
           <Icon name="Ellipsis" size={20} />
         </Button>
       </div>
-      <div
-        className={cn(
-          "p-3 space-y-3"
-        )}
-      >
+      <div className={cn("space-y-3 h-full flex flex-col")}>
         {tasks.length !== 0 && (
-          <ul className="grid gap-3">
+          <ul className="grid gap-3 mb-3">
             {tasks?.map((item, index) => (
               <TaskItem taskItem={item} key={`${item.title}-task-${index}`} />
             ))}
           </ul>
         )}
-        <Button variant={"none"} className="p-0 hover:text-white/40 bg-background w-full rounded py-2 text-lg border border-white/10">
-          <Icon name="ClipboardPlus" size={20} />
-          Add task
-        </Button>
       </div>
+      <Button
+        variant={"none"}
+        className="p-0 hover:text-white/40 bg-background w-full rounded py-2 text-base border border-white/10"
+      >
+        <Icon name="ClipboardPlus" size={20} />
+        Add task
+      </Button>
     </div>
   );
 };

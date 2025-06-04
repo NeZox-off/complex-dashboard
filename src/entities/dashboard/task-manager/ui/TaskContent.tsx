@@ -6,7 +6,7 @@ interface TaskContentProps {}
 
 export const TaskContent: FC<TaskContentProps> = ({}) => {
   return (
-      <div className="grid grid-cols-4 h-full gap-6">
+      <div className="grid grid-cols-4 gap-6">
         <TaskColumn
           status="TODO"
           tasks={TASKS.filter((item) => item.column_status === "TODO")}
