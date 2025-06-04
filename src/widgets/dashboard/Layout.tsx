@@ -10,7 +10,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
       <Sidebar />
       <article className="flex-1 flex flex-col overflow-y-hidden max-h-screen">
         <Header />
-        <section className="flex-1">{children}</section>
+        <section className="min-h-dvh flex flex-col">{children}</section>
       </article>
     </main>
   );

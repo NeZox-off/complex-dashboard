@@ -18,8 +18,8 @@ const NAVIGATION_LINKS: SidebarContent[] = [
         asLink: true,
       },
       {
-        title: "Control",
-        link: `${GLOBAL_PATH}/control`,
+        title: "Administration",
+        link: `${GLOBAL_PATH}/administration`,
         icon: "Settings2",
         asLink: true,
       },

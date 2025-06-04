@@ -1,5 +1,5 @@
 "use client";
-import { NAVIGATION_LINKS, TRANSFORM_CURRENT_PATH } from "@/shared/config";
+import { TRANSFORM_CURRENT_PATH } from "@/shared/config";
 import { useSidebarShowStore } from "@/shared/model";
 import {
   Breadcrumb,
@@ -19,11 +19,32 @@ interface HeaderProps {}
 
 const Header = ({}: HeaderProps) => {
   const { show, setShow } = useSidebarShowStore();
-  const segments = usePathname()!.split("/").filter(Boolean);
-  const allTitles = NAVIGATION_LINKS.flatMap(({ content }) =>
-    content!.map(({ link }) => link?.split("/").pop()?.toLowerCase())
-  );  
-  const lastPathname = allTitles[segments.length - 1];
+  const pathname = usePathname();
+  const filteredPathname = pathname?.split("/").filter(Boolean);
+  let currentLink = "";
+  const crumbs = filteredPathname!.map((item, index) => {
+    currentLink += `/${item}`;
+    return (
+      <React.Fragment key={`${index}-breadcrumbs-${item}`}>
+        <BreadcrumbItem>
+          {Boolean(index === filteredPathname!.length - 1) ? (
+            <BreadcrumbPage className="text-base">
+              {TRANSFORM_CURRENT_PATH[item]}
+            </BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink asChild>
+              <Link className="text-base" href={`${currentLink}`}>
+                {TRANSFORM_CURRENT_PATH[item]}
+              </Link>
+            </BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        {Boolean(index !== filteredPathname!.length - 1) && (
+          <BreadcrumbSeparator />
+        )}
+      </React.Fragment>
+    );
+  });
 
   return (
     <header className="py-5 border-b-2 border-solid border-[#333] sticky top-0 z-20 bg-background">
@@ -40,31 +61,7 @@ const Header = ({}: HeaderProps) => {
             )}
           </Button>
           <Breadcrumb>
-            <BreadcrumbList>
-              {segments.map((item, index) => (
-                <React.Fragment key={`${index}-breadcrumbs-${item}`}>
-                  <BreadcrumbItem>
-                    {item.toLowerCase() === lastPathname ? (
-                      <BreadcrumbPage className="text-base">
-                        {TRANSFORM_CURRENT_PATH[item]}
-                      </BreadcrumbPage>
-                    ) : (
-                      <BreadcrumbLink asChild>
-                        <Link
-                          className="text-base"
-                          href={`/${segments[index]}`}
-                        >
-                          {TRANSFORM_CURRENT_PATH[item]}
-                        </Link>
-                      </BreadcrumbLink>
-                    )}
-                  </BreadcrumbItem>
-                  {item.toLowerCase() !== lastPathname && (
-                    <BreadcrumbSeparator />
-                  )}
-                </React.Fragment>
-              ))}
-            </BreadcrumbList>
+            <BreadcrumbList>{crumbs}</BreadcrumbList>
           </Breadcrumb>
         </div>
       </div>

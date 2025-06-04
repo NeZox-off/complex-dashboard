@@ -2,10 +2,10 @@
 import React from "react";
 import { cn } from "@/shared/lib";
 import { SETTINGS_FEATURES } from "@/shared/config";
-import UserProfile from "@/entities/user/ui/UserProfile";
 import { useSidebarShowStore } from "@/shared/model";
 import Navigation from "./Navigation";
 import { SettingsItem } from "./AccountItem";
+import { UserProfile } from "@/features/user/@x/user";
 
 interface SidebarProps {}
 

@@ -1,14 +1,7 @@
+import { TEST_USERS } from "@/shared/config";
+import { UserType } from "@/shared/model";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-
-type UserType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  privacy: boolean;
-  rememberMe: boolean;
-};
 
 interface UserStore {
   user: UserType | null;
@@ -18,7 +11,7 @@ interface UserStore {
 const useUserStore = create<UserStore>()(
   persist(
     (set, get) => ({
-      user: null,
+      user: TEST_USERS[0],
       setUser: (data: UserType) => set({ user: data }),
     }),
     {
@@ -28,4 +21,4 @@ const useUserStore = create<UserStore>()(
   )
 );
 
-export default useUserStore;
+export { useUserStore };
