@@ -35,12 +35,6 @@ const SETTINGS_FEATURES: ContentLinks[] = [
     asLink: false,
   },
   {
-    title: "Settings",
-    icon: "Settings",
-    link: `${GLOBAL_PATH}/settings`,
-    asLink: true,
-  },
-  {
     title: "Help",
     icon: "CircleHelp",
     link: `${GLOBAL_PATH}/help`,

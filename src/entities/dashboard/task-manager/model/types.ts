@@ -8,6 +8,7 @@ const userSchema = z.object({
 });
 
 const taskSchema = z.object({
+  id: z.string(),
   title: z.string(),
   description: z.string(),
   column_status: z.enum(["TODO", "IN_PROGRESS", "IN_REVIEW", "DONE"]),
@@ -22,6 +23,16 @@ const taskSchema = z.object({
   }),
 });
 
-type TaskType = z.infer<typeof taskSchema>;
+const taskStoreSchema = z.object({
+  tasks: z.array(taskSchema),
+  searchQuery: z.string(),
+  setSearchQuery: z.function().args(z.string()).returns(z.void()),
+  setTasks: z.function().args(z.array(taskSchema)).returns(z.void()),
+  removeTask: z.function().args(z.array(taskSchema)).returns(z.void()),
+  searchTasks: z.function().args(z.array(taskSchema)).returns(z.void()),
+});
 
-export { taskSchema, type TaskType };
+type TaskType = z.infer<typeof taskSchema>;
+type TaskStoreType = z.infer<typeof taskStoreSchema>;
+
+export { taskSchema, type TaskType, taskStoreSchema, type TaskStoreType };

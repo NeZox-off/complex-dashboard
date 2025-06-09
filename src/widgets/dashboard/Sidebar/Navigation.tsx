@@ -5,15 +5,16 @@ import { usePathname } from "next/navigation";
 import { Icon, Tooltip, TooltipContent, TooltipTrigger } from "@/shared/ui";
 import { cn } from "@/shared/lib";
 import { useSidebarShowStore } from "@/shared/model/store/sidebarShowState";
-import { useHistoryLinks } from "@/shared/model";
 import { NAVIGATION_LINKS } from "@/shared/config";
+import { useHistoryLinks } from "@/shared/model";
 
 interface NavigationProps {}
 
 const Navigation = ({}: NavigationProps) => {
   const { show } = useSidebarShowStore();
-  const { setHistoryLink } = useHistoryLinks();
+  const { addHistory } = useHistoryLinks();
   const pathname = usePathname();
+
   return (
     <nav>
       {NAVIGATION_LINKS.map((item, index) => (
@@ -27,17 +28,6 @@ const Navigation = ({}: NavigationProps) => {
             <ul className="space-y-2">
               {item.content?.map((contentItem, contentIndex) => (
                 <li
-                  onClick={() =>
-                    setHistoryLink({
-                      title: item.title,
-                      content: {
-                        title: contentItem.title,
-                        link: contentItem.link!,
-                        icon: contentItem.icon,
-                      },
-                      last_visit: new Date(),
-                    })
-                  }
                   key={`${contentIndex}-nav-content-item-${contentItem.title}`}
                   className={cn(
                     "relative mx-auto",

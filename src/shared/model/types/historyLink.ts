@@ -14,7 +14,11 @@ type HistoryLinks = z.infer<typeof historyLinksSchema>;
 
 const historyLinksStore = z.object({
   history: z.array(historyLinksSchema),
-  setHistoryLink: z.function().args(historyLinksSchema).returns(z.void()),
+  setHistoryLink: z.function().args(z.array(historyLinksSchema)).returns(z.void()),
+  removeHistoryLink: z
+    .function()
+    .args(z.array(historyLinksSchema))
+    .returns(z.void()),
 });
 
 type HistoryLinksStore = z.infer<typeof historyLinksStore>;

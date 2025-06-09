@@ -6,5 +6,7 @@ export * from "./button";
 export * from "./form";
 export * from "./tooltip";
 export * from "./breadcrumb";
-export * from './dropdown-menu'
+export * from "./dropdown-menu";
 export * from "./NothingBlock";
+export * from "./Draggable";
+export * from "./Droppable";

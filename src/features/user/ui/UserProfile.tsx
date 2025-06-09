@@ -42,8 +42,8 @@ export const UserProfile: FC<UserProfileProps> = ({}) => {
       <DropdownMenuTrigger asChild>
         <div
           className={cn(
-            "flex items-center gap-3 rounded-sm transition-all ease-linear mb-3",
-            show ? "justify-start" : "p-1 hover:bg-[#191A1C]"
+            "flex items-center gap-3 rounded transition-all p-1 hover:bg-[#191A1C] ease-linear mb-3",
+            show ? "justify-start" : null
           )}
         >
           {show ? (
@@ -72,13 +72,17 @@ export const UserProfile: FC<UserProfileProps> = ({}) => {
         align="start"
         className="min-w-64 rounded"
       >
-        <DropdownMenuLabel className="flex items-center gap-3">
-          {profile}
-          <p className="select-none text-lg font-medium whitespace-nowrap">
-            {user?.firstName} {user?.lastName}
-          </p>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        {show ? null : (
+          <>
+            <DropdownMenuLabel className="flex items-center gap-3">
+              {profile}
+              <p className="select-none text-lg font-medium whitespace-nowrap">
+                {user?.firstName} {user?.lastName}
+              </p>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+          </>
+        )}
         <DropdownMenuItem>
           <Icon name="Settings" size={24} />
           Settings

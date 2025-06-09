@@ -2,6 +2,7 @@ import { TaskType } from "../model/types";
 
 const TASKS: TaskType[] = [
   {
+    id: "2278-30-6a00",
     title: "test",
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
@@ -22,7 +23,8 @@ const TASKS: TaskType[] = [
     },
   },
   {
-    title: "test",
+    id: "9ea7-3b-cef0",
+    title: "Плагин",
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
     column_status: "DONE",
@@ -37,6 +39,7 @@ const TASKS: TaskType[] = [
     },
   },
   {
+    id: "7b1a-132-18f9",
     title: "test",
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",
@@ -52,6 +55,7 @@ const TASKS: TaskType[] = [
     },
   },
   {
+    id: "053d-4b-715c",
     title: "test",
     description:
       "Сделать плагин для отслеживания онлайн статуса у игроков на сервере.",

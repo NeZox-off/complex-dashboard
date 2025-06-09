@@ -4,6 +4,8 @@ import { cn } from "@/shared/lib";
 import { TaskType } from "../model/types";
 import { Button, Icon } from "@/shared/ui";
 import { IconPriority } from "./IconPriority";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface TaskItemProps {
   taskItem: TaskType;
@@ -21,8 +23,34 @@ var TaskItem = ({ taskItem }: TaskItemProps) => {
     small: "bg-green-500/10 text-green-500 border-green-500 fill-green-500",
   };
 
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: taskItem.id,
+    data: {
+      type: "Task",
+      taskItem,
+    },
+  });
+
+  const styles = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
   return (
-    <li className="bg-background px-3 py-2 group border border-white/10">
+    <li
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      style={styles}
+      className={cn("bg-background px-3 py-2 group border border-white/10 list-none", isDragging ? "z-10 bg-background/90" : null)}
+    >
       <div className="relative space-y-2">
         <div>
           <h4 className="text-2xl font-medium">{taskItem.title}</h4>

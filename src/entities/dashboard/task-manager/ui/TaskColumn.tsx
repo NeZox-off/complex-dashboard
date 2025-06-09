@@ -1,9 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { COLUMN_STATUS, TASKS } from "../config";
 import { cn } from "@/shared/lib";
-import { Button, Icon } from "@/shared/ui";
+import { Button, Droppable, Icon } from "@/shared/ui";
 import { TaskType } from "../model/types";
 import TaskItem from "./TaskItem";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 interface TaskColumnProps {
   status: TaskType["column_status"];
@@ -18,6 +24,9 @@ const COLOR_STATUS = {
 };
 
 export const TaskColumn: FC<TaskColumnProps> = ({ tasks, status }) => {
+  const tasksIds = useMemo(() => {
+    return tasks.map((task) => task.id);
+  }, [tasks]);
   return (
     <div className="shrink-0 flex flex-col bg-[#191A1C] shadow-md pt-6 pb-3 px-3 border-x-2 border-b-2 border-white/10 rounded-b">
       <div className="flex items-center justify-between mb-2">
@@ -34,13 +43,12 @@ export const TaskColumn: FC<TaskColumnProps> = ({ tasks, status }) => {
         </Button>
       </div>
       <div className={cn("space-y-3 h-full flex flex-col")}>
-        {tasks.length !== 0 && (
-          <ul className="grid gap-3 mb-3">
-            {tasks?.map((item, index) => (
+        <SortableContext items={tasksIds}>
+          {tasks.length !== 0 &&
+            tasks?.map((item, index) => (
               <TaskItem taskItem={item} key={`${item.title}-task-${index}`} />
             ))}
-          </ul>
-        )}
+        </SortableContext>
       </div>
       <Button
         variant={"none"}

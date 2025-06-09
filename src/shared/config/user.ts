@@ -4,7 +4,7 @@ const TEST_USERS: UserType[] = [
   {
     id: "57c6-13a-3302",
     firstName: "Maksym",
-    lastName: "Poliakov",
+    lastName: "Held",
     url: null,
     email: "mpolakov7772@gmail.com",
     online: new Date(),
@@ -14,8 +14,8 @@ const TEST_USERS: UserType[] = [
   },
   {
     id: "57c6-13a-3302",
-    firstName: "Maksym",
-    lastName: "Poliakov",
+    firstName: "Den",
+    lastName: "Vored",
     url: null,
     email: "mpolakov7772@gmail.com",
     online: new Date(),
@@ -25,8 +25,8 @@ const TEST_USERS: UserType[] = [
   },
   {
     id: "57c6-13a-3302",
-    firstName: "Maksym",
-    lastName: "Poliakov",
+    firstName: "Ken",
+    lastName: "Paskal",
     url: null,
     email: "mpolakov7772@gmail.com",
     online: new Date(),

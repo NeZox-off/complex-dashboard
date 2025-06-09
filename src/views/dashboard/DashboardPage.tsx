@@ -2,13 +2,13 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import { Icon, IconProps } from "@/shared/ui";
-import { useHistoryLinks } from "@/shared/model";
 import VisitTime from "@/features/dashboard/ui/visit-time";
+import { useHistoryLinks } from "@/shared/model";
 
 interface DashboardPageProps {}
 
 export const DashboardPage: FC<DashboardPageProps> = ({}) => {
-  const { history, setHistoryLink } = useHistoryLinks();
+  const { history, addHistory } = useHistoryLinks();
   return (
     <div className="relative h-[30rem] bg-[#191A1C] border-b border-solid border-white/10">
       {history?.length > 0 && (
@@ -25,7 +25,7 @@ export const DashboardPage: FC<DashboardPageProps> = ({}) => {
                     href={link}
                     className="p-4 inline-flex flex-col gap-6 bg-background w-80 border-2 border-solid border-white/10 rounded text-[#333] transition-all hover:bg-[#0B0C0D]"
                     onClick={() =>
-                      setHistoryLink({
+                      addHistory({
                         title: item.title,
                         content: {
                           title: item.content.title,
